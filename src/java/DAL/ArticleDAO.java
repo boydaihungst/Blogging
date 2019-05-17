@@ -71,22 +71,22 @@ public class ArticleDAO extends BaseDAO<Article> {
         return arts;
     }
 
-    public ArrayList<Article> getAllWithDetail() {
+    public ArrayList<Article> getAllWithDetail(int type) {
         ArrayList<Article> arts = new ArrayList<Article>();
         PreparedStatement state = null;
         try {
             String query = "SELECT a." + Const.Title + "\n"
                     + "      ,a." + Const.TimeStamp + "\n"
                     + "      ,a." + Const.PostID + "\n"
-                    + "      ,a." + Const.PageID + "\n"
                     + "	  ,ad." + Const.Image + "\n"
                     + "	  ,ad." + Const.Text + "\n"
+                    + "	  ,ad." + Const.Author + "\n"
                     + "	  ,ad." + Const.Type + "\n"
-                    + "	  ,ad." + Const.VisitCount + "\n"
                     + "  FROM " + Const.Table.Articles + " a\n"
                     + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
-                    + "  ON a." + Const.PostID + " = ad." + Const.PostID + "";
+                    + "  ON a." + Const.PostID + " = ad." + Const.PostID + " AND ad." + Const.Type + " = ?";
             state = connection.prepareCall(query);
+            state.setInt(1, type);
             ResultSet rs = state.executeQuery();
             if (rs.next()) {
                 Article art = new Article();
@@ -95,7 +95,7 @@ public class ArticleDAO extends BaseDAO<Article> {
                 detail.setText(rs.getString(Const.Text.toString()));
                 detail.setImage(rs.getString(Const.Image.toString()));
                 detail.setType(rs.getInt(Const.Type.toString()));
-                detail.setVisitCount(rs.getInt(Const.VisitCount.toString()));
+                detail.setAuthor(rs.getString(Const.Author.toString()));
 
                 art.setPostID(rs.getString(Const.PostID.toString()));
                 art.setTimeStamp(rs.getDate(Const.TimeStamp.toString()));

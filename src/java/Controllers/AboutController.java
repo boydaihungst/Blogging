@@ -9,6 +9,7 @@ import DAL.ArticleDAO;
 import Models.Article;
 import Utils.Const;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,29 +21,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hoang
  */
-public class HomeController extends HttpServlet {
+public class AboutController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArticleDAO artDao = new ArticleDAO();
-        ArrayList<Article> arts = artDao.getAll();
-        
+        ArrayList<Article> arts = artDao.getAllWithDetail(4);
+        System.out.println(arts.size());
         request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.toString(), arts);
-        request.setAttribute("isHome", "bold");
-        RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.MY_BLOG.toString());
+        request.setAttribute("isAbout", "bold");
+        RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.ABOUT_ME.toString());
         rd.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     @Override
     public String getServletInfo() {
-        return "Home servlet";
+        return "Short description";
     }// </editor-fold>
 
 }

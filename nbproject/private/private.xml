@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/DAL/ArticleDAO.java</file>
-            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/Models/ArticleDetail.java</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/web/Views/Components/footer/footer.jsp</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/web/Views/Pages/about/about.jsp</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/DAL/StatisticDAO.java</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/Controllers/Proxy.java</file>
             <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/Controllers/HomeController.java</file>
         </group>
     </open-files>

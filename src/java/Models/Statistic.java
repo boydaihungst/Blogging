@@ -9,11 +9,12 @@ package Models;
  *
  * @author Hoang
  */
-public class Page {
+public class Statistic {
 
-    String pageID;
-    String path;
     int visitCount;
+
+    public Statistic() {
+    }
 
     public int getVisitCount() {
         return visitCount;
@@ -21,22 +22,6 @@ public class Page {
 
     public void setVisitCount(int visitCount) {
         this.visitCount = visitCount;
-    }
-
-    public String getPageID() {
-        return pageID;
-    }
-
-    public void setPageID(String pageID) {
-        this.pageID = pageID;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
 }

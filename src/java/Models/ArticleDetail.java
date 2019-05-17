@@ -13,9 +13,17 @@ public class ArticleDetail {
     
     String text;
     String image;
+    String author;
     int type;
-    int visitCount;
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
     public String getText() {
         return text;
     }
@@ -38,14 +46,6 @@ public class ArticleDetail {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getVisitCount() {
-        return visitCount;
-    }
-
-    public void setVisitCount(int visitCount) {
-        this.visitCount = visitCount;
     }
 
 }
