@@ -1,0 +1,19 @@
+.adv {
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.29);
+    border-radius: 10px;
+}
+.adv > .adv-title {
+    font-size: 20px;
+}
+.adv > .adv-content {
+    margin-top: 15px;
+}
+.adv .adv-item {
+    font-size: 14px;
+    border-radius: 10px;
+    padding-bottom: 3px;
+}
+.adv .adv-item a {
+    display: flex;
+}

@@ -58,7 +58,7 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "  ORDER BY [" + Const.TimeStamp + "]";
             state = connection.prepareCall(query);
             ResultSet rs = state.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Article art = new Article();
                 art.setPostID(rs.getString(Const.PostID.toString()));
                 art.setTimeStamp(rs.getDate(Const.TimeStamp.toString()));
@@ -84,11 +84,16 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "	  ,ad." + Const.Type + "\n"
                     + "  FROM " + Const.Table.Articles + " a\n"
                     + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
-                    + "  ON a." + Const.PostID + " = ad." + Const.PostID + " AND ad." + Const.Type + " = ?";
-            state = connection.prepareCall(query);
-            state.setInt(1, type);
+                    + "  ON a." + Const.PostID + " = ad." + Const.PostID;
+            if (type > 0) {
+                query += " AND ad." + Const.Type + " = ?";
+                state = connection.prepareCall(query);
+                state.setInt(1, type);
+            } else {
+                state = connection.prepareCall(query);
+            }
             ResultSet rs = state.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Article art = new Article();
                 ArticleDetail detail = new ArticleDetail();
 

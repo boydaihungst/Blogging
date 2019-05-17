@@ -2,7 +2,7 @@
 <link  href="Views/Components/header/header.css" rel="stylesheet" type="text/css">
 <header>
     <div class="title-section">
-        <div class="title text-capital bold primary">blogging about my life</div>
+        <div class="title text-capital bold primary underline"><a href="home">blogging about my life</a></div>
         <div class="sub-title primary">Welcome to my blog</div>
     </div>
     <nav>

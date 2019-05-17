@@ -40,6 +40,20 @@ public class StatisticDAO extends BaseDAO<Statistic> {
         return stats;
     }
 
+    public int updateVisitCount(int visitCount) {
+        PreparedStatement state = null;
+        try {
+            String query = "UPDATE [" + Const.Table.Statistic + "]\n"
+                    + "   SET [" + Const.VisitCount + "] = ?";
+            state = connection.prepareCall(query);
+            state.setInt(1, visitCount);
+            return state.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
     @Override
     public ArrayList<Statistic> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

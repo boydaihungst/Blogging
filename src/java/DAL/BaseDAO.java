@@ -46,7 +46,6 @@ public abstract class BaseDAO<T> {
         dbConfig.setDriver(configReader.getProperty(Const.DBConfig.driver.toString()));
         dbConfig.setUsername(configReader.getProperty(Const.DBConfig.username.toString()));
         dbConfig.setPassword(configReader.getProperty(Const.DBConfig.password.toString()));
-        System.out.println(dbConfig);
         return dbConfig;
     }
 

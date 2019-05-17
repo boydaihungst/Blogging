@@ -46,6 +46,22 @@ public enum Const {
         ACTIVE_NAV
     }
 
+    public enum ARTICLE_TYPE {
+        BLOG_TYPE_NORMAL(1),
+        BLOG_TYPE_PHOTO(2),
+        BLOG_TYPE_QUOTE(3);
+        private final int text;
+
+        ARTICLE_TYPE(int s) {
+            text = s;
+        }
+
+        public int getValue() {
+            return this.text;
+        }
+
+    }
+
     public enum JSP_PAGE {
         MY_BLOG("Views/Pages/my-blog/my-blog.jsp"),
         ABOUT_ME("Views/Pages/about/about.jsp"),
@@ -56,6 +72,7 @@ public enum Const {
             text = s;
         }
 
+        @Override
         public String toString() {
             return this.text;
         }
@@ -64,7 +81,7 @@ public enum Const {
     public enum JSP_COMPONENTS {
         HEADER("/Views/Components/header/header.jsp"),
         FOOTER("/Views/Components/footer/footer.jsp"),
-        ADVERTISE("/Views/Components/advertise/advertise.jsp"),
+        ADVERTISE("/Views/Components/adv/adv.jsp"),
         BLOG_NORMAL("/Views/Components/blog/normal/normal.jsp"),
         BLOG_QUOTE("/Views/Components/blog/quote/quote.jsp"),
         BLOG_PHOTO("/Views/Components/blog/photo/photo.jsp");
@@ -74,6 +91,7 @@ public enum Const {
             text = s;
         }
 
+        @Override
         public String toString() {
             return this.text;
         }

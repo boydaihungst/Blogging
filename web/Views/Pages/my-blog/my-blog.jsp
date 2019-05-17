@@ -12,8 +12,20 @@
         <div class="container-fluid">
             <!--Header-->
             <jsp:include page="${HEADER}"></jsp:include>
-            <main>
-
+                <main>
+                <c:forEach  items="${LIST_ARTICLE}" var="art">
+                    <c:choose>
+                        <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
+                            <jsp:include page="${BLOG_NORMAl}"></jsp:include>
+                        </c:when>
+                        <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
+                            <jsp:include page="${BLOG_QUOTE}"></jsp:include>
+                        </c:when>
+                        <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
+                            <jsp:include page="${BLOG_PHOTO}"></jsp:include>
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
             </main>
             <!--Footer-->
             <jsp:include page="${FOOTER}"></jsp:include>

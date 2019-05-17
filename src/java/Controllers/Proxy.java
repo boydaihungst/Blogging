@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -19,16 +22,18 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author Hoang
  */
-@WebFilter(filterName = "Proxy", urlPatterns = {"/*"})
 public class Proxy implements Filter {
+
     private FilterConfig filterConfig = null;
     int viewCounter = 0;
-    
+
     public Proxy() {
     }
 
@@ -38,12 +43,21 @@ public class Proxy implements Filter {
 
         Throwable problem = null;
         try {
-            ++this.viewCounter;
+            this.viewCounter++;
+            System.out.println(this.viewCounter);
+            StatisticDAO statisticDAO = new StatisticDAO();
+            statisticDAO.updateVisitCount(this.viewCounter);
             request.setAttribute(Const.JSP_COMPONENTS.HEADER.name(), Const.JSP_COMPONENTS.HEADER.toString());
             request.setAttribute(Const.JSP_COMPONENTS.FOOTER.name(), Const.JSP_COMPONENTS.FOOTER.toString());
-            System.out.println("xxxx " + this.viewCounter);
-            // FIX
-            request.setAttribute(Const.ATTRIBUTE.PAGE_READ_COUNTER.name(), this.viewCounter);
+            request.setAttribute(Const.JSP_COMPONENTS.ADVERTISE.name(), Const.JSP_COMPONENTS.ADVERTISE.toString());
+            String viewCounterAsStr = String.valueOf(this.viewCounter);
+            while (viewCounterAsStr.length() < 6) {
+                viewCounterAsStr = "0" + viewCounterAsStr;
+            }
+            List visitedPageList = Arrays.asList(viewCounterAsStr.split(""));
+            ArrayList<String> pageCounter
+                    = new ArrayList<>(visitedPageList);
+            request.setAttribute(Const.ATTRIBUTE.PAGE_READ_COUNTER.name(), pageCounter);
             chain.doFilter(request, response);
         } catch (Throwable t) {
             problem = t;

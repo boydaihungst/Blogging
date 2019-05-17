@@ -22,10 +22,16 @@ body > .container-fluid > .container {
     margin-right: 20px;
 }
 .container > .right {
-    width: 24%
+    width: 25%
+}
+.container > .right > div {
+    margin-top: 32px
+}
+.container > .right > div:first-child {
+    margin-top: 0px;
 }
 .container > .left {
-    width: 76%;
+    width: 75%;
     margin: 20px;
 }
 .container > .left .art-title {
@@ -44,6 +50,9 @@ body > .container-fluid > .container {
 a {
     color: currentColor;
     text-decoration: none;
+}
+p {
+    margin: 0;
 }
 .text-capital {
     text-transform: capitalize;
@@ -67,5 +76,11 @@ a {
 
 .primary {
     color: #6d5160;
+}
+.underline:hover {
+    text-decoration: underline;
+}
+.clear-underline {
+    text-decoration: none;
 }
 
