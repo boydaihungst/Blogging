@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DaoHuyHoang/Documents/GitHub/Blogging/web/Views/common/common.css</file>
-            <file>file:/C:/Users/DaoHuyHoang/Documents/GitHub/Blogging/web/Views/Pages/my-blog/my-blog.jsp</file>
-            <file>file:/C:/Users/DaoHuyHoang/Documents/GitHub/Blogging/web/Views/Components/blog/normal/normal.jsp</file>
-            <file>file:/C:/Users/DaoHuyHoang/Documents/GitHub/Blogging/src/java/Controllers/HomeController.java</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/web/Views/Pages/my-blog/my-blog.jsp</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/Controllers/Proxy.java</file>
+            <file>file:/C:/Users/Hoang/Documents/NetBeansProjects/Blogging/src/java/Controllers/HomeController.java</file>
         </group>
     </open-files>
 </project-private>

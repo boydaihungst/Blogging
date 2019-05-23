@@ -7,7 +7,6 @@ package DAL;
 
 import Models.Article;
 import Models.ArticleDetail;
-import Utils.ConfigProvider;
 import Utils.Const;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

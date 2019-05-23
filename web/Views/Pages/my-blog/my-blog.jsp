@@ -12,21 +12,34 @@
         <div class="container-fluid">
             <!--Header-->
             <jsp:include page="${HEADER}"></jsp:include>
-                <main>
-                <c:forEach  items="${LIST_ARTICLE}" var="art">
-                    <c:choose>
-                        <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
-                            <jsp:include page="${BLOG_NORMAl}"></jsp:include>
-                        </c:when>
-                        <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
-                            <jsp:include page="${BLOG_QUOTE}"></jsp:include>
-                        </c:when>
-                        <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
-                            <jsp:include page="${BLOG_PHOTO}"></jsp:include>
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-            </main>
+
+                <div class="container">
+                    <main class="left">
+                    <c:forEach  items="${LIST_ARTICLE}" var="art">
+                        <c:choose>
+                            <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
+                                <jsp:include page="<%= (String) request.getAttribute(Const.JSP_COMPONENTS.BLOG_NORMAL.name())%>"></jsp:include>
+                            </c:when>
+                            <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
+                                <jsp:include page="<%= (String) request.getAttribute(Const.JSP_COMPONENTS.BLOG_QUOTE.name())%>"></jsp:include>
+                            </c:when>
+                            <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
+                                <jsp:include page="<%= (String) request.getAttribute(Const.JSP_COMPONENTS.BLOG_PHOTO.name())%>"></jsp:include>
+                            </c:when>
+                        </c:choose>
+                    </c:forEach>
+                </main>
+
+                <div class="right">
+                    <jsp:include page="${ADVERTISE}">
+                        <jsp:param name="advTitle" value="Share this page"></jsp:param>
+                    </jsp:include>
+
+                    <jsp:include page="${ADVERTISE}">
+                        <jsp:param name="advTitle" value="Create a website"></jsp:param>
+                    </jsp:include>
+                </div>
+            </div>
             <!--Footer-->
             <jsp:include page="${FOOTER}"></jsp:include>
         </div>

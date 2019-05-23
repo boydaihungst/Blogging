@@ -6,10 +6,8 @@
 package Controllers;
 
 import DAL.StatisticDAO;
-import Models.Statistic;
 import Utils.Const;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -21,9 +19,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -44,7 +39,6 @@ public class Proxy implements Filter {
         Throwable problem = null;
         try {
             this.viewCounter++;
-            System.out.println(this.viewCounter);
             StatisticDAO statisticDAO = new StatisticDAO();
             statisticDAO.updateVisitCount(this.viewCounter);
             request.setAttribute(Const.JSP_COMPONENTS.HEADER.name(), Const.JSP_COMPONENTS.HEADER.toString());
