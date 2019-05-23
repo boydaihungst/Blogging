@@ -48,8 +48,4 @@ public abstract class BaseDAO<T> {
         dbConfig.setPassword(configReader.getProperty(Const.DBConfig.password.toString()));
         return dbConfig;
     }
-
-    public abstract T get(T model);
-
-    public abstract ArrayList<T> getAll();
 }

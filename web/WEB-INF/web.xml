@@ -9,6 +9,8 @@
         <filter-name>VisitCounter</filter-name>
         <servlet-name>HomeController</servlet-name>
         <servlet-name>AboutController</servlet-name>
+        <servlet-name>BlogOverviewController</servlet-name>
+        <servlet-name>PostController</servlet-name>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -20,6 +22,14 @@
         <servlet-name>AboutController</servlet-name>
         <servlet-class>Controllers.AboutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlogOverviewController</servlet-name>
+        <servlet-class>Controllers.BlogOverviewController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostController</servlet-name>
+        <servlet-class>Controllers.PostController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -27,6 +37,14 @@
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about-me</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogOverviewController</servlet-name>
+        <url-pattern>/overview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostController</servlet-name>
+        <url-pattern>/post</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,7 +5,9 @@
  */
 package Controllers;
 
+import DAL.AdvertiseDAO;
 import DAL.StatisticDAO;
+import Models.Advertise;
 import Utils.Const;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,20 +40,7 @@ public class Proxy implements Filter {
 
         Throwable problem = null;
         try {
-            this.viewCounter++;
-            StatisticDAO statisticDAO = new StatisticDAO();
-            statisticDAO.updateVisitCount(this.viewCounter);
-            request.setAttribute(Const.JSP_COMPONENTS.HEADER.name(), Const.JSP_COMPONENTS.HEADER.toString());
-            request.setAttribute(Const.JSP_COMPONENTS.FOOTER.name(), Const.JSP_COMPONENTS.FOOTER.toString());
-            request.setAttribute(Const.JSP_COMPONENTS.ADVERTISE.name(), Const.JSP_COMPONENTS.ADVERTISE.toString());
-            String viewCounterAsStr = String.valueOf(this.viewCounter);
-            while (viewCounterAsStr.length() < 6) {
-                viewCounterAsStr = "0" + viewCounterAsStr;
-            }
-            List visitedPageList = Arrays.asList(viewCounterAsStr.split(""));
-            ArrayList<String> pageCounter
-                    = new ArrayList<>(visitedPageList);
-            request.setAttribute(Const.ATTRIBUTE.PAGE_READ_COUNTER.name(), pageCounter);
+            this.setCommonAttribute(request, response);
             chain.doFilter(request, response);
         } catch (Throwable t) {
             problem = t;
@@ -66,6 +55,31 @@ public class Proxy implements Filter {
                 throw (IOException) problem;
             }
         }
+    }
+
+    public void setCommonAttribute(ServletRequest request, ServletResponse response) {
+        request.setAttribute(Const.JSP_COMPONENTS.HEADER.name(), Const.JSP_COMPONENTS.HEADER.toString());
+        request.setAttribute(Const.JSP_COMPONENTS.FOOTER.name(), Const.JSP_COMPONENTS.FOOTER.toString());
+        request.setAttribute(Const.JSP_COMPONENTS.ADVERTISE.name(), Const.JSP_COMPONENTS.ADVERTISE.toString());
+        request.setAttribute(Const.ATTRIBUTE.LIST_ADVERTISE.name(), this.getAdvertise());
+        request.setAttribute(Const.ATTRIBUTE.PAGE_READ_COUNTER.name(), this.getViewCounter(request, response));
+    }
+
+    public ArrayList<Advertise> getAdvertise() {
+        AdvertiseDAO advDAO = new AdvertiseDAO();
+        return advDAO.getAll();
+    }
+
+    public ArrayList<String> getViewCounter(ServletRequest request, ServletResponse response) {
+        this.viewCounter++;
+        StatisticDAO statisticDAO = new StatisticDAO();
+        statisticDAO.updateVisitCount(this.viewCounter);
+        String viewCounterAsStr = String.valueOf(this.viewCounter);
+        while (viewCounterAsStr.length() < 6) {
+            viewCounterAsStr = "0" + viewCounterAsStr;
+        }
+        List visitedPageList = Arrays.asList(viewCounterAsStr.split(""));
+        return new ArrayList<>(visitedPageList);
     }
 
     public FilterConfig getFilterConfig() {

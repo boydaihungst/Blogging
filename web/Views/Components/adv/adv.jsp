@@ -1,17 +1,9 @@
-<div class="adv">
-    <div class="adv-title bold">${param.advTitle}</div>
-    <div class="adv-content">
-        <div class="adv-item">
-            <a href="#">
-                <img src="" alt=""/>
-                <p class="underline">Share on Facebook</p>
-            </a>
-        </div>
-        <div class="adv-item">
-            <a href="#">
-                <img src="" alt=""/>
-                <p class="underline">Share on Twitter</p>
-            </a>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:forEach items="${LIST_ADVERTISE}" var="item">
+    <div class="adv">
+        <div class="adv-title bold">${item.title}</div>
+        <div class="adv-content">
+            ${item.content}
         </div>
     </div>
-</div>
+</c:forEach>

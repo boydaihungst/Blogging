@@ -21,6 +21,7 @@ public enum Const {
     VisitCount,
     Path,
     AdID,
+    Content,
     Icon,
     Author;
 
@@ -32,6 +33,14 @@ public enum Const {
         Advertise;
     }
 
+    public enum ATTRIBUTE {
+        LIST_ARTICLE,
+        PAGE_READ_COUNTER,
+        LIST_ADVERTISE
+    }
+    public enum PARAMS {
+        ID
+    }
     // DB Config
     public enum DBConfig {
         url,
@@ -40,17 +49,11 @@ public enum Const {
         password,
     }
 
-    public enum ATTRIBUTE {
-        LIST_ARTICLE,
-        PAGE_READ_COUNTER,
-        ACTIVE_NAV
-    }
-
     public enum ARTICLE_TYPE {
+        BLOG_TYPE_ABOUT(0),
         BLOG_TYPE_NORMAL(1),
         BLOG_TYPE_QUOTE(2),
-        BLOG_TYPE_PHOTO(3),
-        BLOG_TYPE_ABOUT(4);
+        BLOG_TYPE_PHOTO(3);
         private final int text;
 
         ARTICLE_TYPE(int s) {
@@ -66,7 +69,7 @@ public enum Const {
     public enum JSP_PAGE {
         MY_BLOG("Views/Pages/my-blog/my-blog.jsp"),
         ABOUT_ME("Views/Pages/about/about.jsp"),
-        OVER_VIEW("Views/Pages/overview/overview.jsp");
+        OVER_VIEW("Views/Pages/blog-overview/blog-overview.jsp");
         private final String text;
 
         JSP_PAGE(String s) {

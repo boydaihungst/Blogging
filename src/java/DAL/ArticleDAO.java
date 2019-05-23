@@ -12,8 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,23 +23,37 @@ import java.util.logging.Logger;
  */
 public class ArticleDAO extends BaseDAO<Article> {
 
-    @Override
-    public Article get(Article model) {
+    public Article getFirstWithDetail(int postId) {
         Article art = null;
         PreparedStatement state = null;
         try {
-            String query = "SELECT [" + Const.PostID.toString() + "]\n"
-                    + "      ,[" + Const.Title.toString() + "]\n"
-                    + "      ,[" + Const.TimeStamp.toString() + "]\n"
-                    + "  FROM [" + Const.Table.Articles.toString() + "] WHERE " + Const.PostID.toString() + " = ?";
+            String query = "SELECT a." + Const.Title + "\n"
+                    + "      ,a." + Const.TimeStamp + "\n"
+                    + "      ,a." + Const.PostID + "\n"
+                    + "	  ,ad." + Const.Image + "\n"
+                    + "	  ,ad." + Const.Text + "\n"
+                    + "	  ,ad." + Const.Author + "\n"
+                    + "	  ,a." + Const.Type + "\n"
+                    + "  FROM " + Const.Table.Articles + " a\n"
+                    + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
+                    + "  ON a." + Const.PostID + " = ad." + Const.PostID + " AND a." + Const.PostID + " = ? \n";
+            query += "ORDER BY a." + Const.TimeStamp;
             state = connection.prepareCall(query);
-            state.setString(1, model.getPostID());
+            state.setInt(1, postId);
             ResultSet rs = state.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 art = new Article();
+                ArticleDetail detail = new ArticleDetail();
+
+                detail.setText(rs.getString(Const.Text.toString()));
+                detail.setImage(rs.getString(Const.Image.toString()));
+                detail.setAuthor(rs.getString(Const.Author.toString()));
+
                 art.setPostID(rs.getString(Const.PostID.toString()));
-                art.setTimeStamp(rs.getTimestamp(Const.TimeStamp.toString()));
+                art.setTimeStamp(rs.getDate(Const.TimeStamp.toString()));
                 art.setTitle(rs.getString(Const.Title.toString()));
+                art.setType(rs.getInt(Const.Type.toString()));
+                art.setDetail(detail);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ArticleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,15 +61,16 @@ public class ArticleDAO extends BaseDAO<Article> {
         return art;
     }
 
-    @Override
-    public ArrayList<Article> getAll() {
+    public ArrayList<Article> getAllNoDetail() {
         ArrayList<Article> arts = new ArrayList<Article>();
         PreparedStatement state = null;
         try {
             String query = "SELECT [" + Const.PostID + "]\n"
                     + "      ,[" + Const.Title + "]\n"
                     + "      ,[" + Const.TimeStamp + "]\n"
+                    + "      ,[" + Const.Type + "]\n"
                     + "  FROM [" + Const.Table.Articles + "]\n"
+                    + "  WHERE [" + Const.Type + "] > " + Const.ARTICLE_TYPE.BLOG_TYPE_ABOUT.getValue() + "\n"
                     + "  ORDER BY [" + Const.TimeStamp + "]";
             state = connection.prepareCall(query);
             ResultSet rs = state.executeQuery();
@@ -64,6 +79,7 @@ public class ArticleDAO extends BaseDAO<Article> {
                 art.setPostID(rs.getString(Const.PostID.toString()));
                 art.setTimeStamp(rs.getDate(Const.TimeStamp.toString()));
                 art.setTitle(rs.getString(Const.Title.toString()));
+                art.setType(rs.getInt(Const.Type.toString()));
                 arts.add(art);
             }
         } catch (SQLException ex) {
@@ -75,7 +91,7 @@ public class ArticleDAO extends BaseDAO<Article> {
     public ArrayList<Article> getAllWithDetail(int type, boolean isquel) {
         ArrayList<Article> arts = new ArrayList<Article>();
         PreparedStatement state = null;
-        Map<Integer, Integer> params = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> params = new TreeMap<Integer, Integer>();
         try {
             String query = "SELECT a." + Const.Title + "\n"
                     + "      ,a." + Const.TimeStamp + "\n"
@@ -83,20 +99,20 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "	  ,ad." + Const.Image + "\n"
                     + "	  ,ad." + Const.Text + "\n"
                     + "	  ,ad." + Const.Author + "\n"
-                    + "	  ,ad." + Const.Type + "\n"
+                    + "	  ,a." + Const.Type + "\n"
                     + "  FROM " + Const.Table.Articles + " a\n"
                     + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
                     + "  ON a." + Const.PostID + " = ad." + Const.PostID;
-            // Fix
-            if (type > 0) {
+            if (type > -1) {
                 if (isquel) {
-                    query += " AND ad." + Const.Type + " = ?";
+                    query += " AND a." + Const.Type + " = ?";
                     params.put(1, type);
                 } else {
-                    query += " AND ad." + Const.Type + " != ?";
+                    query += " AND a." + Const.Type + " != ?";
                     params.put(1, type);
                 }
             }
+            query += "\n ORDER BY a." + Const.TimeStamp;
             state = connection.prepareCall(query);
             for (Map.Entry<Integer, Integer> entry : params.entrySet()) {
                 state.setInt(entry.getKey(), entry.getValue());
@@ -109,12 +125,12 @@ public class ArticleDAO extends BaseDAO<Article> {
 
                 detail.setText(rs.getString(Const.Text.toString()));
                 detail.setImage(rs.getString(Const.Image.toString()));
-                detail.setType(rs.getInt(Const.Type.toString()));
                 detail.setAuthor(rs.getString(Const.Author.toString()));
 
                 art.setPostID(rs.getString(Const.PostID.toString()));
                 art.setTimeStamp(rs.getDate(Const.TimeStamp.toString()));
                 art.setTitle(rs.getString(Const.Title.toString()));
+                art.setType(rs.getInt(Const.Type.toString()));
                 art.setDetail(detail);
 
                 arts.add(art);

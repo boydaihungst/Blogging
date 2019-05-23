@@ -5,6 +5,7 @@
  */
 package Models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -16,10 +17,19 @@ public class Article {
     String postID;
     String title;
     Date timeStamp;
+    int type;
     ArticleDetail detail;
 
     public ArticleDetail getDetail() {
         return detail;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public void setDetail(ArticleDetail detail) {
@@ -51,7 +61,7 @@ public class Article {
     }
 
     public String getTimeStampAsString() {
-        return this.timeStamp.getDate()  +"-"+ (1 + this.timeStamp.getMonth())+ "-"+ (1900 + this.timeStamp.getYear());
+        return this.timeStamp.getDate() + "-" + (1 + this.timeStamp.getMonth()) + "-" + (1900 + this.timeStamp.getYear());
     }
 
 }

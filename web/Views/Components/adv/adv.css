@@ -17,3 +17,10 @@
 .adv .adv-item a {
     display: flex;
 }
+.adv .button {
+    border-radius: 20px;
+    background: #6b5260;
+    padding: 5px;
+    color: white;
+    margin-top: 10px;
+}

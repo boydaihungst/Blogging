@@ -1,9 +1,3 @@
-<%-- 
-    Document   : about-me
-    Created on : May 17, 2019, 12:14:23 AM
-    Author     : Hoang
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="Utils.Const"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,14 +30,7 @@
                         </div>
                     </c:forEach>
                 </main>
-                <div class="right">
-                    <jsp:include page="${ADVERTISE}">
-                        <jsp:param name="advTitle" value="Share this page"></jsp:param>
-                    </jsp:include>
-
-                    <jsp:include page="${ADVERTISE}">
-                        <jsp:param name="advTitle" value="Create a website"></jsp:param>
-                    </jsp:include>
+                <div class="right"><jsp:include page="${ADVERTISE}"></jsp:include>
                 </div>
             </div>
             <!--Footer-->

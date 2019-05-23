@@ -1,0 +1,15 @@
+.blog-overview .list-blog .article-section,
+.blog-overview .list-blog .header-section {
+    padding: 8px;
+    font-size: 15px;
+}
+.blog-overview .list-blog .article-section span {
+    flex-basis: 25%;
+}
+.blog-overview .list-blog .article-section .title {
+    line-height: 1.4;
+}
+.blog-overview .list-blog .header-section  {
+    justify-content: space-between;
+    font-size: 14px;
+}

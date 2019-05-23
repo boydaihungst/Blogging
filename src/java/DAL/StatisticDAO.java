@@ -21,7 +21,6 @@ import java.util.logging.Logger;
  */
 public class StatisticDAO extends BaseDAO<Statistic> {
 
-    @Override
     public Statistic get(Statistic model) {
         Statistic stats = null;
         PreparedStatement state = null;
@@ -54,7 +53,6 @@ public class StatisticDAO extends BaseDAO<Statistic> {
         return -1;
     }
 
-    @Override
     public ArrayList<Statistic> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

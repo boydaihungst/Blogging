@@ -2,6 +2,10 @@
     min-width: 65px;
     max-width: 65px;
 }
+.blog-quote .article-block {
+    width: 100%;
+}
+
 .blog-quote > .article-block > .header {
     margin-bottom: 13px;
     justify-content: space-between;

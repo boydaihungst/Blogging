@@ -1,9 +1,9 @@
-<div class="blog-photo  flex">
+<div class="blog-photo flex">
     <div class="avatar flex"></div>
     <div class="article-block">
         <div class="header flex">
-            <div class="title bold underline text-capital">
-                photo
+            <div class="title bold underline text-capital fs-${titleFontSize} ${clearUnderLine}">
+                <a href="post?ID=${item.postID}">photo</a>
             </div>
             <div class="time-stamp italic">
                 ${item.getTimeStampAsString()}

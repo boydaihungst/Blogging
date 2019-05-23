@@ -2,8 +2,8 @@
     <div class="avatar flex"></div>
     <div class="article-block">
         <div class="header flex">
-            <div class="title bold underline">
-                ${item.title}
+            <div class="title bold underline fs-${titleFontSize} ${clearUnderLine}">
+                <a href="post?ID=${item.postID}">${item.title}</a>
             </div>
             <div class="time-stamp italic">
                 ${item.getTimeStampAsString()}

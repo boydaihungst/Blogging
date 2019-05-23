@@ -3,7 +3,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: 'Alegreya Sans',Helvetica,Arial,sans-serif;
-    background-image: url(http://css.simplesite.com/images/v3/backgrounds/pictures/body/wallpaper-white.jpg);
+    /*background-image: url(http://css.simplesite.com/images/v3/backgrounds/pictures/body/wallpaper-white.jpg);*/
 
 }
 body > .container-fluid {
@@ -22,7 +22,8 @@ body > .container-fluid > .container {
     margin-right: 20px;
 }
 .container > .right {
-    width: 25%
+    width: 25%;
+    margin-bottom: 20px;
 }
 .container > .right > div {
     margin-top: 32px
@@ -116,4 +117,12 @@ p {
 .border-dot {
     border-bottom: 3px dotted rgba(0,0,0,.2);
 }
-
+.border-top {
+    border-top: 1px solid;
+}
+.border-grey {
+    border-color: #c8c8c8;
+}
+.fs-24px {
+    font-size: 24px
+}

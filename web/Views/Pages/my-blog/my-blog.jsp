@@ -20,40 +20,37 @@
             <jsp:include page="${HEADER}"></jsp:include>
                 <div class="container">
                     <main class="left">
+                    <c:if test="${hideLeftTitle} != true">
                         <h2 class="text-capital bold">my blog</h2>
+                    </c:if>
                     <c:forEach  items="${LIST_ARTICLE}" var="art">
                         <div class="article-section border-dot">
                             <c:set var="item" value="${art}" scope="request"/>
                             <c:choose>
-                                <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
+                                <c:when test="${art.type == BLOG_TYPE_NORMAL}">
                                     <c:import url="${BLOG_NORMAL}">
                                     </c:import>
                                 </c:when>
-                                <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
+                                <c:when test="${art.type == BLOG_TYPE_QUOTE}">
                                     <c:import url="${BLOG_QUOTE}">
                                     </c:import>
                                 </c:when>
-                                <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
+                                <c:when test="${art.type == BLOG_TYPE_PHOTO}">
                                     <c:import url="${BLOG_PHOTO}">
                                     </c:import>
                                 </c:when>
                             </c:choose>
                         </div>
                     </c:forEach>
-                    <div class="over-view text-center text-capital underline">overview</div>
+                    <div class="over-view text-center text-capital underline">
+                        <a href="overview">overview</a>
+                    </div>
                 </main>
 
-                <div class="right">
-                    <jsp:include page="${ADVERTISE}">
-                        <jsp:param name="advTitle" value="Share this page"></jsp:param>
-                    </jsp:include>
-
-                    <jsp:include page="${ADVERTISE}">
-                        <jsp:param name="advTitle" value="Create a website"></jsp:param>
-                    </jsp:include>
+                <div class="right"><jsp:include page="${ADVERTISE}"></jsp:include>
+                    </div>
                 </div>
-            </div>
-            <!--Footer-->
+                <!--Footer-->
             <jsp:include page="${FOOTER}"></jsp:include>
         </div>
     </body>

@@ -14,7 +14,6 @@ public class ArticleDetail {
     String text;
     String image;
     String author;
-    int type;
 
     public String getAuthor() {
         return author;
@@ -30,14 +29,6 @@ public class ArticleDetail {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public String getImage() {
