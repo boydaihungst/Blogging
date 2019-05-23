@@ -1,5 +1,4 @@
 <div class="adv">
-    <link href="Views/Components/adv/adv.css" rel="stylesheet" type="text/css"/>
     <div class="adv-title bold">${param.advTitle}</div>
     <div class="adv-content">
         <div class="adv-item">

@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="Views/Components/footer/footer.css" rel="stylesheet" type="text/css">
 <footer>
     <div class="container">
         <div class="footer-page-counter">

@@ -13,6 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>About me</title>
         <link href="Views/common/common.css" type="text/css" rel="stylesheet"/>
+        <link href="Views/Components/footer/footer.css" rel="stylesheet" type="text/css">
+        <link  href="Views/Components/header/header.css" rel="stylesheet" type="text/css">
+        <link href="Views/Components/adv/adv.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid article-block">
@@ -34,13 +37,13 @@
                     </c:forEach>
                 </main>
                 <div class="right">
-                <jsp:include page="${ADVERTISE}">
-                    <jsp:param name="advTitle" value="Share this page"></jsp:param>
-                </jsp:include>
-                    
-                <jsp:include page="${ADVERTISE}">
-                    <jsp:param name="advTitle" value="Create a website"></jsp:param>
-                </jsp:include>
+                    <jsp:include page="${ADVERTISE}">
+                        <jsp:param name="advTitle" value="Share this page"></jsp:param>
+                    </jsp:include>
+
+                    <jsp:include page="${ADVERTISE}">
+                        <jsp:param name="advTitle" value="Create a website"></jsp:param>
+                    </jsp:include>
                 </div>
             </div>
             <!--Footer-->
