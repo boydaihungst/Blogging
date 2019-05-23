@@ -15,7 +15,7 @@ body > .container-fluid {
 }
 body > .container-fluid > .container {
     display: flex;
-    padding: 35px 0px;
+    padding-top: 35px;
 }
 .container {
     margin-left: 20px;
@@ -40,6 +40,14 @@ body > .container-fluid > .container {
 .container > .left .art-content {
     line-height: 1.4;
 }
+.container > .left > .article-section {
+    margin-top: 16px;
+}
+/*my-blog*/
+.over-view {
+    margin: 35px 0 40px;
+}
+/*about*/
 .signature-section {
     margin: 60px 0px;
 }
@@ -47,12 +55,19 @@ body > .container-fluid > .container {
     font-family: 'Pacifico' !important;
     font-size: 40px;
 }
+/*about*/
 a {
     color: currentColor;
     text-decoration: none;
 }
 p {
     margin: 0;
+}
+.flex {
+    display: flex;
+}
+.block {
+    display: block;
 }
 .text-capital {
     text-transform: capitalize;
@@ -73,7 +88,9 @@ p {
 .italic {
     font-style: italic;
 }
-
+.text-style-normal {
+    font-style: normal;
+}
 .primary {
     color: #6d5160;
 }
@@ -81,11 +98,22 @@ p {
 .underline {
     text-decoration: underline;
 }
-
 .underline-horver:hover {
     text-decoration: underline;
 }
 .clear-underline {
     text-decoration: none;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.border-dot {
+    border-bottom: 3px dotted rgba(0,0,0,.2);
 }
 

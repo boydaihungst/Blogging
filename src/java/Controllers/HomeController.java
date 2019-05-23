@@ -21,18 +21,18 @@ import javax.servlet.http.HttpServletResponse;
  * @author Hoang
  */
 public class HomeController extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArticleDAO artDao = new ArticleDAO();
-        ArrayList<Article> arts = artDao.getAllWithDetail(-1);
-        
+        ArrayList<Article> arts = artDao.getAllWithDetail(4, false);
+
         request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.name(), arts);
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_NORMAL.name(), Const.JSP_COMPONENTS.BLOG_NORMAL.toString());
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_QUOTE.name(), Const.JSP_COMPONENTS.BLOG_QUOTE.toString());
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_PHOTO.name(), Const.JSP_COMPONENTS.BLOG_PHOTO.toString());
-        
+
         request.setAttribute(Const.ARTICLE_TYPE.BLOG_TYPE_NORMAL.name(), Const.ARTICLE_TYPE.BLOG_TYPE_NORMAL.getValue());
         request.setAttribute(Const.ARTICLE_TYPE.BLOG_TYPE_QUOTE.name(), Const.ARTICLE_TYPE.BLOG_TYPE_QUOTE.getValue());
         request.setAttribute(Const.ARTICLE_TYPE.BLOG_TYPE_PHOTO.name(), Const.ARTICLE_TYPE.BLOG_TYPE_PHOTO.getValue());
@@ -40,13 +40,13 @@ public class HomeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.MY_BLOG.toString());
         rd.forward(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Home servlet";

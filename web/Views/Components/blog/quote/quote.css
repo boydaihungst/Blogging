@@ -1,10 +1,20 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : May 16, 2019, 9:36:45 PM
-    Author     : Hoang
-*/
-
+.blog-quote > .avatar {
+    min-width: 65px;
+    max-width: 65px;
+}
+.blog-quote > .article-block > .header {
+    margin-bottom: 13px;
+    justify-content: space-between;
+}
+.blog-quote .author:after{
+    content: '\00A0 \2014';
+}
+.blog-quote blockquote {
+    margin: 0;
+    border-right: 5px solid #000;
+    padding-right: 15px;
+}
+.blog-quote blockquote p {
+    font-size: 18px;
+    line-height: 1.25;
+}

@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,9 +72,10 @@ public class ArticleDAO extends BaseDAO<Article> {
         return arts;
     }
 
-    public ArrayList<Article> getAllWithDetail(int type) {
+    public ArrayList<Article> getAllWithDetail(int type, boolean isquel) {
         ArrayList<Article> arts = new ArrayList<Article>();
         PreparedStatement state = null;
+        Map<Integer, Integer> params = new HashMap<Integer, Integer>();
         try {
             String query = "SELECT a." + Const.Title + "\n"
                     + "      ,a." + Const.TimeStamp + "\n"
@@ -84,13 +87,21 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "  FROM " + Const.Table.Articles + " a\n"
                     + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
                     + "  ON a." + Const.PostID + " = ad." + Const.PostID;
+            // Fix
             if (type > 0) {
-                query += " AND ad." + Const.Type + " = ?";
-                state = connection.prepareCall(query);
-                state.setInt(1, type);
-            } else {
-                state = connection.prepareCall(query);
+                if (isquel) {
+                    query += " AND ad." + Const.Type + " = ?";
+                    params.put(1, type);
+                } else {
+                    query += " AND ad." + Const.Type + " != ?";
+                    params.put(1, type);
+                }
             }
+            state = connection.prepareCall(query);
+            for (Map.Entry<Integer, Integer> entry : params.entrySet()) {
+                state.setInt(entry.getKey(), entry.getValue());
+            }
+
             ResultSet rs = state.executeQuery();
             while (rs.next()) {
                 Article art = new Article();

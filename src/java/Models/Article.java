@@ -50,4 +50,8 @@ public class Article {
         this.timeStamp = timeStamp;
     }
 
+    public String getTimeStampAsString() {
+        return this.timeStamp.getDate()  +"-"+ (1 + this.timeStamp.getMonth())+ "-"+ (1900 + this.timeStamp.getYear());
+    }
+
 }

@@ -48,8 +48,9 @@ public enum Const {
 
     public enum ARTICLE_TYPE {
         BLOG_TYPE_NORMAL(1),
-        BLOG_TYPE_PHOTO(2),
-        BLOG_TYPE_QUOTE(3);
+        BLOG_TYPE_QUOTE(2),
+        BLOG_TYPE_PHOTO(3),
+        BLOG_TYPE_ABOUT(4);
         private final int text;
 
         ARTICLE_TYPE(int s) {

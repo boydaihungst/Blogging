@@ -1,18 +1,16 @@
-.blog-normal {
-    display: flex;
-}
 .blog-normal > .avatar {
-    width: 65px;
-    display: flex;
+    min-width: 65px;
+    max-width: 65px;
 }
 .blog-normal > .article-block > .header {
     margin-bottom: 13px;
+    justify-content: space-between;
 }
 .blog-normal > .article-block > .content > img {
     float: left;
     width: 50%;
     border-radius: 10px;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 

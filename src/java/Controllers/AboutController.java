@@ -27,7 +27,7 @@ public class AboutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArticleDAO artDao = new ArticleDAO();
-        ArrayList<Article> arts = artDao.getAllWithDetail(4);
+        ArrayList<Article> arts = artDao.getAllWithDetail(4, true);
         request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.toString(), arts);
         request.setAttribute("isAbout", "bold");
         RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.ABOUT_ME.toString());

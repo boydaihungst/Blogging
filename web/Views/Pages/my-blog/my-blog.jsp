@@ -20,23 +20,27 @@
             <jsp:include page="${HEADER}"></jsp:include>
                 <div class="container">
                     <main class="left">
+                        <h2 class="text-capital bold">my blog</h2>
                     <c:forEach  items="${LIST_ARTICLE}" var="art">
-                        <c:set var="item" value="${art}" scope="request"/>
-                        <c:choose>
-                            <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
-                                <c:import url="${BLOG_NORMAL}">
-                                </c:import>
-                            </c:when>
-                            <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
-                                <c:import url="${BLOG_QUOTE}">
-                                </c:import>
-                            </c:when>
-                            <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
-                                <c:import url="${BLOG_PHOTO}">
-                                </c:import>
-                            </c:when>
-                        </c:choose>
+                        <div class="article-section border-dot">
+                            <c:set var="item" value="${art}" scope="request"/>
+                            <c:choose>
+                                <c:when test="${art.detail.type == BLOG_TYPE_NORMAL}">
+                                    <c:import url="${BLOG_NORMAL}">
+                                    </c:import>
+                                </c:when>
+                                <c:when test="${art.detail.type == BLOG_TYPE_QUOTE}">
+                                    <c:import url="${BLOG_QUOTE}">
+                                    </c:import>
+                                </c:when>
+                                <c:when test="${art.detail.type == BLOG_TYPE_PHOTO}">
+                                    <c:import url="${BLOG_PHOTO}">
+                                    </c:import>
+                                </c:when>
+                            </c:choose>
+                        </div>
                     </c:forEach>
+                    <div class="over-view text-center text-capital underline">overview</div>
                 </main>
 
                 <div class="right">
