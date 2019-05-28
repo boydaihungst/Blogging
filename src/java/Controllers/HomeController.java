@@ -36,6 +36,7 @@ public class HomeController extends HttpServlet {
         request.setAttribute(Const.ARTICLE_TYPE.BLOG_TYPE_QUOTE.name(), Const.ARTICLE_TYPE.BLOG_TYPE_QUOTE.getValue());
         request.setAttribute(Const.ARTICLE_TYPE.BLOG_TYPE_PHOTO.name(), Const.ARTICLE_TYPE.BLOG_TYPE_PHOTO.getValue());
         request.setAttribute("isHome", "bold");
+        request.setAttribute("hideLeftTitle", false);
         RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.MY_BLOG.toString());
         rd.forward(request, response);
     }

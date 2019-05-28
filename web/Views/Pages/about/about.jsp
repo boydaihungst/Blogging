@@ -10,6 +10,7 @@
         <link href="Views/Components/footer/footer.css" rel="stylesheet" type="text/css">
         <link  href="Views/Components/header/header.css" rel="stylesheet" type="text/css">
         <link href="Views/Components/adv/adv.css" rel="stylesheet" type="text/css"/>
+        <link href="Views/Pages/about/about.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid article-block">

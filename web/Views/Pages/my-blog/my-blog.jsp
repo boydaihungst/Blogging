@@ -6,13 +6,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>My Blog</title>
-        <link  href="Views/Components/header/header.css" rel="stylesheet" type="text/css">
+        <link href="Views/Components/header/header.css" rel="stylesheet" type="text/css">
         <link href="Views/Components/footer/footer.css" rel="stylesheet" type="text/css">
         <link href="Views/common/common.css" type="text/css" rel="stylesheet"/>
         <link href="Views/Components/blog/normal/normal.css" type="text/css" rel="stylesheet">
         <link href="Views/Components/blog/photo/photo.css" type="text/css" rel="stylesheet">
         <link href="Views/Components/blog/quote/quote.css" type="text/css" rel="stylesheet">
         <link href="Views/Components/adv/adv.css" rel="stylesheet" type="text/css"/>
+        <link href="Views/Pages/my-blog/my-blog.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid">
@@ -20,7 +21,7 @@
             <jsp:include page="${HEADER}"></jsp:include>
                 <div class="container">
                     <main class="left">
-                    <c:if test="${hideLeftTitle} != true">
+                    <c:if test="${!hideLeftTitle}">
                         <h2 class="text-capital bold">my blog</h2>
                     </c:if>
                     <c:forEach  items="${LIST_ARTICLE}" var="art">

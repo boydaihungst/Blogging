@@ -1,0 +1,7 @@
+.signature-section {
+    margin: 60px 0px;
+}
+.signature-section > .signature-sign {
+    font-family: 'Pacifico' !important;
+    font-size: 40px;
+}

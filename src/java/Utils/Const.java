@@ -69,7 +69,8 @@ public enum Const {
     public enum JSP_PAGE {
         MY_BLOG("Views/Pages/my-blog/my-blog.jsp"),
         ABOUT_ME("Views/Pages/about/about.jsp"),
-        OVER_VIEW("Views/Pages/blog-overview/blog-overview.jsp");
+        OVER_VIEW("Views/Pages/blog-overview/blog-overview.jsp"),
+        ERROR("Views/Pages/error/error.jsp");
         private final String text;
 
         JSP_PAGE(String s) {

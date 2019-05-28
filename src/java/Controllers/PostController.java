@@ -27,6 +27,10 @@ public class PostController extends HttpServlet {
         ArrayList<Article> arts = new ArrayList<Article>();
         Article firstWithDetail = artDao.getFirstWithDetail(postId);
         arts.add(firstWithDetail);
+        if (arts.size() <= 0 || firstWithDetail == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
         request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.name(), arts);
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_NORMAL.name(), Const.JSP_COMPONENTS.BLOG_NORMAL.toString());
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_QUOTE.name(), Const.JSP_COMPONENTS.BLOG_QUOTE.toString());
