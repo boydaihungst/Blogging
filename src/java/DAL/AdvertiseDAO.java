@@ -6,8 +6,6 @@
 package DAL;
 
 import Models.Advertise;
-import Models.Article;
-import Models.ArticleDetail;
 import Utils.Const;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

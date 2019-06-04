@@ -19,22 +19,20 @@
                 <!--Main-->
                 <div class="container">
                     <main class="left">
-                    <c:forEach items="${LIST_ARTICLE}" var="article">
-                        <h3 class="art-title">${ article.title }</h3>
-                        <div class="art-content">
-                            ${ article.detail.text }
+                        <h3 class="art-title">${ ABOUT_ME_ITEM.title }</h3>
+                    <div class="art-content">
+                        ${ ABOUT_ME_ITEM.text }
 
-                            <div class="signature-section">
-                                <p>Kind regards</p>
-                                <div class="signature-sign">${ article.detail.author }</div>
-                            </div>
+                        <div class="signature-section">
+                            <p>Kind regards</p>
+                            <div class="signature-sign">${ ABOUT_ME_ITEM.author }</div>
                         </div>
-                    </c:forEach>
+                    </div>
                 </main>
                 <div class="right"><jsp:include page="${ADVERTISE}"></jsp:include>
+                    </div>
                 </div>
-            </div>
-            <!--Footer-->
+                <!--Footer-->
             <jsp:include page="${FOOTER}"></jsp:include>
         </div>
     </body>

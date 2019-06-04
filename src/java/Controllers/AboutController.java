@@ -5,7 +5,9 @@
  */
 package Controllers;
 
+import DAL.AboutDAO;
 import DAL.ArticleDAO;
+import Models.About;
 import Models.Article;
 import Utils.Const;
 import java.io.IOException;
@@ -26,9 +28,9 @@ public class AboutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArticleDAO artDao = new ArticleDAO();
-        ArrayList<Article> arts = artDao.getAllWithDetail(Const.ARTICLE_TYPE.BLOG_TYPE_ABOUT.getValue(), true);
-        request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.toString(), arts);
+        AboutDAO artDao = new AboutDAO();
+        About arts = artDao.getFirstWithDetail();
+        request.setAttribute(Const.ATTRIBUTE.ABOUT_ME_ITEM.toString(), arts);
         request.setAttribute("isAbout", "bold");
         RequestDispatcher rd = request.getRequestDispatcher(Const.JSP_PAGE.ABOUT_ME.toString());
         rd.forward(request, response);

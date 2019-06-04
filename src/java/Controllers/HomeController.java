@@ -26,7 +26,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArticleDAO artDao = new ArticleDAO();
-        ArrayList<Article> arts = artDao.getAllWithDetail(Const.ARTICLE_TYPE.BLOG_TYPE_ABOUT.getValue(), false);
+        ArrayList<Article> arts = artDao.getAllWithDetail();
         request.setAttribute(Const.ATTRIBUTE.LIST_ARTICLE.name(), arts);
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_NORMAL.name(), Const.JSP_COMPONENTS.BLOG_NORMAL.toString());
         request.setAttribute(Const.JSP_COMPONENTS.BLOG_QUOTE.name(), Const.JSP_COMPONENTS.BLOG_QUOTE.toString());

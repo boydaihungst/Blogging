@@ -21,6 +21,7 @@ public enum Const {
     VisitCount,
     Path,
     AdID,
+    ID,
     Content,
     Icon,
     Author;
@@ -30,13 +31,15 @@ public enum Const {
         Articles,
         Statistic,
         ArticleDetails,
+        About,
         Advertise;
     }
 
     public enum ATTRIBUTE {
         LIST_ARTICLE,
         PAGE_READ_COUNTER,
-        LIST_ADVERTISE
+        LIST_ADVERTISE,
+        ABOUT_ME_ITEM
     }
     public enum PARAMS {
         ID
@@ -50,7 +53,6 @@ public enum Const {
     }
 
     public enum ARTICLE_TYPE {
-        BLOG_TYPE_ABOUT(0),
         BLOG_TYPE_NORMAL(1),
         BLOG_TYPE_QUOTE(2),
         BLOG_TYPE_PHOTO(3);

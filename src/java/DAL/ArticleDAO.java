@@ -12,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,7 +68,6 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "      ,[" + Const.TimeStamp + "]\n"
                     + "      ,[" + Const.Type + "]\n"
                     + "  FROM [" + Const.Table.Articles + "]\n"
-                    + "  WHERE [" + Const.Type + "] > " + Const.ARTICLE_TYPE.BLOG_TYPE_ABOUT.getValue() + "\n"
                     + "  ORDER BY [" + Const.TimeStamp + "]";
             state = connection.prepareCall(query);
             ResultSet rs = state.executeQuery();
@@ -88,10 +85,9 @@ public class ArticleDAO extends BaseDAO<Article> {
         return arts;
     }
 
-    public ArrayList<Article> getAllWithDetail(int type, boolean isquel) {
+    public ArrayList<Article> getAllWithDetail() {
         ArrayList<Article> arts = new ArrayList<Article>();
         PreparedStatement state = null;
-        Map<Integer, Integer> params = new TreeMap<Integer, Integer>();
         try {
             String query = "SELECT a." + Const.Title + "\n"
                     + "      ,a." + Const.TimeStamp + "\n"
@@ -102,22 +98,9 @@ public class ArticleDAO extends BaseDAO<Article> {
                     + "	  ,a." + Const.Type + "\n"
                     + "  FROM " + Const.Table.Articles + " a\n"
                     + "  INNER JOIN " + Const.Table.ArticleDetails + " ad\n"
-                    + "  ON a." + Const.PostID + " = ad." + Const.PostID;
-            if (type > -1) {
-                if (isquel) {
-                    query += " AND a." + Const.Type + " = ?";
-                    params.put(1, type);
-                } else {
-                    query += " AND a." + Const.Type + " != ?";
-                    params.put(1, type);
-                }
-            }
-            query += "\n ORDER BY a." + Const.TimeStamp;
+                    + "  ON a." + Const.PostID + " = ad." + Const.PostID + "\n"
+                    + " ORDER BY a." + Const.TimeStamp;
             state = connection.prepareCall(query);
-            for (Map.Entry<Integer, Integer> entry : params.entrySet()) {
-                state.setInt(entry.getKey(), entry.getValue());
-            }
-
             ResultSet rs = state.executeQuery();
             while (rs.next()) {
                 Article art = new Article();
